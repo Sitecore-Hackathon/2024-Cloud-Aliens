@@ -56,6 +56,8 @@ let score = 0;
 // global tracking vars
 
 let isEventListenerActive = false;
+let isGamePaused = false;
+let gameOver = false;
 
 //control the snake
 
@@ -135,10 +137,23 @@ document.getElementById("play-again-button").addEventListener("click", function 
 
 // If spacebar is pressed, start interval again
 document.addEventListener("keydown", function (event) {
-    if (event.keyCode == 32) {
-        playAgain();
+    if (event.keyCode == 32) { // Spacebar key
+        event.preventDefault(); // Prevent the default action to avoid scrolling the page
+        if (!isGamePaused && !gameOver) {
+            clearInterval(game); // Pause the game by clearing the interval
+            isGamePaused = true;
+            console.log("Game paused");
+        } else if (!isGamePaused && gameOver) {
+            playAgain();
+            console.log("Game restarted");
+        } else {
+            game = setInterval(draw, 100); // Resume the game by setting the interval again
+            isGamePaused = false;
+            console.log("Game resumed");
+        }
     }
 });
+
 
 // If ctrl alt s is pressed, grab parent iframe and hide it
 document.addEventListener("keydown", function (event) {
@@ -169,10 +184,10 @@ function draw() {
     ctx.drawImage(ground, 0, 0);
 
     for (let i = 0; i < snake.length; i++) {
-        ctx.fillStyle = (i == 0) ? "green" : "white";
+        ctx.fillStyle = (i == 0) ? "red" : "white";
         ctx.fillRect(snake[i].x, snake[i].y, box, box);
 
-        ctx.strokeStyle = "red";
+        ctx.strokeStyle = "yellow";
         ctx.strokeRect(snake[i].x, snake[i].y, box, box);
     }
 
@@ -214,6 +229,7 @@ function draw() {
     if (snakeX < box || snakeX > 17 * box || snakeY < 3 * box || snakeY > 17 * box || collision(newHead, snake)) {
         clearInterval(game);
         dead.play();
+        gameOver = true;
         // After 1 second delay, display modal with button "Play Again"
         setTimeout(function () {
             document.getElementById("play-again-modal").style.display = "flex";
@@ -230,21 +246,3 @@ function draw() {
 // call draw function every 100 ms
 
 let game = setInterval(draw, 100);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

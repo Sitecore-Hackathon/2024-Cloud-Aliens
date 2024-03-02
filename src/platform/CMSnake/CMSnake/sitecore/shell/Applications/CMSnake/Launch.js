@@ -1,5 +1,4 @@
-﻿alert("Launched Game")
-// set a listener to listen for ctrl alt s, then launch snake.js
+﻿// set a listener to listen for ctrl alt s, then launch snake.js
 let isIframeVisible = false; // This will track the visibility state of the iframe
 
 function toggleIframeVisibility(e) {
@@ -16,7 +15,7 @@ function toggleIframeVisibility(e) {
             gameFrame = document.createElement('iframe');
             gameFrame.id = 'gameFrame';
             gameFrame.src = '/sitecore/shell/Applications/CMSnake/index.html';
-            gameFrame.style.cssText = 'position: absolute; z-index: 999; top: 0; width: 700px; height: 700px; margin: 25% 25%; display: none;'; // Initial state is hidden
+            gameFrame.className = 'game-frame';
             document.body.appendChild(gameFrame);
         }
 

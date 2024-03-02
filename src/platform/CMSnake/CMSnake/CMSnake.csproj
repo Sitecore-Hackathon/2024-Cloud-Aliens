@@ -95,6 +95,7 @@
     <Content Include="sitecore\shell\Applications\CMSnake\img\ground.png" />
     <Content Include="sitecore\shell\Applications\CMSnake\index.html" />
     <Content Include="sitecore\shell\Applications\CMSnake\Launch.js" />
+    <Content Include="sitecore\shell\Applications\CMSnake\snake.css" />
     <Content Include="sitecore\shell\Applications\CMSnake\snake.js" />
   </ItemGroup>
   <ItemGroup>
