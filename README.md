@@ -1,31 +1,26 @@
-﻿![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
-# Sitecore Hackathon 2024
+﻿# Sitecore Hackathon 2024
 
-## Team name
-Cloud Aliens
+## Team:  Cloud Aliens
+
+![Cloud Aliens](./images/CloudAliens.png)
 
 ## Category
 Best Module for XM/XP or XM Cloud - Entertainment Category
 
 ## Description
-Our hackathon entry introduces an engaging and entertaining module directly within the Sitecore Content Management (CM) interface: a classic Snake game. This module is designed to provide a fun and interactive way for users to spend time while waiting for content publishing processes or simply to take a short break during their workday. Alongside the game, we've integrated a leaderboard feature that records high scores, fostering a sense of community and friendly competition among Sitecore users.
+Our hackathon entry introduces an engaging and entertaining module directly within the Sitecore Content Management (CM) interface: a classic Snake game. This module is designed to provide a fun and interactive way for users to spend time while waiting for content publishing processes or simply to take a short break during their workday. 
 
 ## Module Purpose
 Problem Solved: The publishing process in Sitecore can sometimes be lengthy, leaving users waiting with little to do. Additionally, the work environment can often benefit from light-hearted engagement to improve user experience and satisfaction.
 
-Solution: Our Snake game module offers a delightful distraction for users during wait times, enhancing their overall experience within the Sitecore interface. The leaderboard promotes engagement by encouraging users to beat their own or others' high scores, adding a competitive edge.
+Solution: Our Snake game module offers a delightful distraction for users during wait times, enhancing their overall experience within the Sitecore interface.
 
 ## Video
-Dive into the fun with our exclusive sneak peek video! 🌟 Discover the seamless integration of our classic Snake game right within the Sitecore Content Management interface. Whether you're curious about how to launch the game during those publishing wait times or eager to see the leaderboard in action, our video has got you covered.
+Discover the seamless integration of our classic Snake game right within the Sitecore Content Management interface. Whether you're curious about how to launch the game during those publishing wait times or eager to game action, our video has got you covered.
 
  - Quick Start Guide: We'll walk you through how to easily access and start the game from the Sitecore interface, ensuring you can dive into the fun without a hitch.
 
  - Gameplay in Action: Get a firsthand look at the snake slithering through the digital garden, growing with each item it devours. Our video showcases smooth gameplay, intuitive controls, and how the game fits perfectly within your workflow.
-
-- Leaderboard Excitement: See how you stack up against your colleagues! We'll show you the leaderboard feature, where high scores are celebrated and recorded. It's not just about playing; it's about climbing to the top and leaving your mark.
-
-
-Catch all the action and more by clicking on the link below. Let the games begin!
 
 [CM Snake - YouTube](#video-link)
 
@@ -89,12 +84,8 @@ To run our image with the CMSnake module, follow these instructions:
 
     ```powershell
     .\up.ps1
-## Add Images
-- ![Game Menu Icon](./images/game-menu-icon.png)
-- ![Gameplay Interface](./images/gameplay-interface.png)
-- ![Pause Screen](./images/pause-screen.png)
+- Open and build Visual Studio solution CloudAliens.sln
 
+- Publish CMSnake project with folder profile
 
-![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
-![Deal With It](docs/images/deal-with-it.gif?raw=true "Deal With It")
-![Random](https://thiscatdoesnotexist.com/)
+- Enjoy the experience at https://xmcloudcm.localhost/sitecore/
