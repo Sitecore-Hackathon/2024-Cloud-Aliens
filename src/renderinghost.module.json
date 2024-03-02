@@ -14,6 +14,16 @@
 				"path": "/sitecore/content/Documents and settings/All users/Start menu/Left/CMSnake",
 				"allowedPushOperations": "CreateUpdateAndDelete"
 			},
+			{
+				"name": "CMSnake-Templates",
+				"path": "/sitecore/templates/Feature/CMSnake",
+				"allowedPushOperations": "CreateUpdateAndDelete"
+			},
+			{
+				"name": "CMSnake-Settings",
+				"path": "/sitecore/system/Settings/Feature/CMSnake",
+				"allowedPushOperations": "CreateUpdateAndDelete"
+			},
         ]
     }
 }
