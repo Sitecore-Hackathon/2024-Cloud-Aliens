@@ -7,7 +7,13 @@
                 "name": "DefaultRenderingHost",
                 "path": "/sitecore/system/Settings/Services/Rendering Hosts/Default",
                 "scope": "singleItem"
-            }
+            },
+			{
+				"name": "CMSnakeIcon",
+				"database":"core",
+				"path": "/sitecore/content/Documents and settings/All users/Start menu/Left/CMSnake",
+				"allowedPushOperations": "CreateUpdateAndDelete"
+			},
         ]
     }
 }

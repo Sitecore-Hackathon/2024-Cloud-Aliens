@@ -1,0 +1,54 @@
+﻿---
+ID: "5ff8b970-ab74-4e23-802e-f8569b81d98e"
+Parent: "eba3991f-8d26-41b1-97e5-090d55020aa0"
+Template: "f58958d2-555b-4f56-946c-589e8866880c"
+Path: /sitecore/content/Documents and settings/All users/Start menu/Left/CMSnake
+BranchID: "a28303b4-f2d5-42e6-a3c6-79f1d06f40d4"
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: "Apps/32x32/Direction-1.png"
+- ID: "6ba1018f-9794-4798-963e-601d413b9ca3"
+  Hint: Message
+  Value: "cmsnake:launch"
+- ID: "9efed9bb-2ec8-498a-91b9-655091224e4d"
+  Hint: Icon
+  Value: "Apps/32x32/Direction-1.png"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 0
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{8664A3E8-EDA6-482B-8776-DBEB4B0B17F9}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240302T065237Z
+    - ID: "326cd362-cb1c-4e81-b5f2-5efa940351f7"
+      Hint: Display name
+      Value: CMSnake
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\neha.pasi@perficient.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\neha.pasi@perficient.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "4a6a4cd4-0114-4147-a0b9-d1a1e410a349"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\neha.pasi@perficient.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240302T123339Z
+    - ID: "e7d3348b-8323-42ba-bc9c-48e1f4e994dc"
+      Hint: Tool tip
+      Value: Launch CMSnake
