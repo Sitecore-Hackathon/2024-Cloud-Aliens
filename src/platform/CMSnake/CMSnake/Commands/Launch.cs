@@ -1,4 +1,5 @@
-﻿using Sitecore.Shell.Framework.Commands;
+using Sitecore.Security.Accounts;
+using Sitecore.Shell.Framework.Commands;
 
 namespace CMSnake.Commands
 {
@@ -8,9 +9,16 @@ namespace CMSnake.Commands
         private static bool IsSnakeLaunched = false;
         public override void Execute(CommandContext context)
         {
+            User currentUser = Sitecore.Context.User;
+            string adminUsername = string.Empty;
+
+            if (currentUser != null && currentUser.IsAuthenticated)
+            {
+                adminUsername = currentUser.Profile.FullName.Replace("sitecore\\","");
+            }
             if (!IsSnakeLaunched)
             {
-                AttachScript();
+                AttachScript(adminUsername);
                 AttachStyles();
                 AttachIframe();
                 IsSnakeLaunched = true;
@@ -20,11 +28,14 @@ namespace CMSnake.Commands
             }
         }
 
-        public void AttachScript()
+        public void AttachScript(string adminUsername)
         {
-            Sitecore.Web.UI.Sheer.SheerResponse.Eval(
-            "var scriptTag = document.createElement('script'); scriptTag.src = '/sitecore/shell/Applications/CMSnake/Launch.js'; document.head.appendChild(scriptTag);"
-);
+            
+            Sitecore.Web.UI.Sheer.SheerResponse.Eval($"localStorage.setItem('userNameCMS', '{adminUsername}');" +
+                    "var scriptTag = document.createElement('script');" +
+                    " scriptTag.src = '/sitecore/shell/Applications/CMSnake/Launch.js'; " +
+                    "document.head.appendChild(scriptTag);"
+                );
         }
 
         public void AttachStyles() {
