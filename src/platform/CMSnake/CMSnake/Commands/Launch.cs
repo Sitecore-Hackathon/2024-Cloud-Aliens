@@ -20,7 +20,7 @@ namespace CMSnake.Commands
             {
                 AttachScript(adminUsername);
                 AttachStyles();
-                AttachIframe();
+                AttachIframe(adminUsername);
                 IsSnakeLaunched = true;
             } else
             {
@@ -42,8 +42,9 @@ namespace CMSnake.Commands
             Sitecore.Web.UI.Sheer.SheerResponse.Eval("var styleTag = document.createElement('link'); styleTag.rel = 'stylesheet'; styleTag.href = '/sitecore/shell/Applications/CMSnake/snake.css'; document.head.appendChild(styleTag);");
         }
 
-        public void AttachIframe() {
-            Sitecore.Web.UI.Sheer.SheerResponse.Eval("var iframe = document.createElement('iframe'); iframe.src = '/sitecore/shell/Applications/CMSnake/index.html'; iframe.setAttribute('id', 'gameFrame');iframe.setAttribute('class', 'game-frame'); document.body.appendChild(iframe); iframe.focus();");
+        public void AttachIframe(string adminUsername) {
+            Sitecore.Web.UI.Sheer.SheerResponse.Eval($"var iframe = document.createElement('iframe'); iframe.src = '/sitecore/shell/Applications/CMSnake/index.html'; iframe.setAttribute('id', 'gameFrame'); iframe.setAttribute('class', 'game-frame'); document.body.appendChild(iframe); iframe.focus(); iframe.setAttribute('attr-player-name', '{adminUsername}');");
+
         }
 
 

@@ -95,6 +95,9 @@ function draw() {
         clearInterval(game);
         dead.play();
         gameOver = true;
+        if (window.parent && typeof window.parent.updateScores === "function") {
+            window.parent.updateScores(score);
+        }
         // After 1 second delay, display modal with button "Play Again"
         setTimeout(function () {
             document.getElementById("play-again-modal").style.display = "flex";
@@ -106,6 +109,20 @@ function draw() {
     ctx.fillStyle = "white";
     ctx.font = "45px Times New Roman";
     ctx.fillText(score, 2 * box, 1.6 * box);
+
+    ctx.fillStyle = "white";
+    ctx.font = "20px Times New Roman";
+    // grab name from attr-player-name on iframe
+    const playerName = window.parent.document.getElementById('gameFrame').getAttribute('attr-player-name');
+    ctx.fillText("Player: " + playerName, 2 * box + 40, 1.6 * box);
+    let playerNameSize = ctx.measureText("Player: " + playerName);
+
+    ctx.fillStyle = "white";
+    ctx.font = "20px Times New Roman";
+    // grab highest score on iframe
+    const highestScore = window.parent.document.getElementById('gameFrame').getAttribute('attr-highest-score') || '0';
+    const highestScoreName = window.parent.document.getElementById('gameFrame').getAttribute('attr-highest-score-name') || 'No one';
+    ctx.fillText(`High Score (${highestScoreName}): ${highestScore}`, 2 * box + 60 + playerNameSize, 1.6 * box);
 }
 
 function direction(event) {
@@ -143,29 +160,13 @@ function playAgain() {
 
 function toggleSnakeIframeVisibility(e) {
     if (e.key === 'Escape' || (e.ctrlKey && e.altKey && e.key === 's')) {
-        console.log("Escape or ctrl alt s pressed, hiding iframe in snake JS");
-        e.stopPropagation();
-        e.preventDefault();
-
-        // Getting the iframe element from the parent document
-        let gameFrame = window.parent.document.getElementById('gameFrame');
-
-        // Check if the iframe is not hidden
-        if (!gameFrame.hasAttribute('hidden')) {
-            console.log("Hiding iframe in snake JS");
-            // Hiding the iframe
-            gameFrame.setAttribute('hidden', '');
-            gameFrame.style.display = 'none'; // This line might be redundant if you're using 'hidden'
-
-            // Assuming you want to remove the listener here
-            document.removeEventListener("keyup", toggleSnakeIframeVisibility);
-            isEventListenerActive = false;
-        }
+        document.removeEventListener("keyup", toggleSnakeIframeVisibility);
+        isEventListenerActive = false;
     }
 }
 
 function cycleEventListener() {
-    if(!isEventListenerActive) {
+    if (!isEventListenerActive) {
         document.addEventListener("keyup", toggleSnakeIframeVisibility);
     }
 }
@@ -173,8 +174,7 @@ function cycleEventListener() {
 // ------------------ Event Listener Adding
 document.addEventListener("keydown", direction);
 
-document.addEventListener("keyup", toggleSnakeIframeVisibility);
-
+cycleEventListener();
 
 document.getElementById("play-again-button").addEventListener("click", function () {
     playAgain();
@@ -184,30 +184,17 @@ document.getElementById("play-again-button").addEventListener("click", function 
 document.addEventListener("keydown", function (event) {
     if (event.keyCode == 32) { // Spacebar key
         event.preventDefault(); // Prevent the default action to avoid scrolling the page
-        if (!isGamePaused && !gameOver) {
-            clearInterval(game); // Pause the game by clearing the interval
-            isGamePaused = true;
-            console.log("Game paused");
-        } else if (!isGamePaused && gameOver) {
+        if (gameOver) {
             playAgain();
-            console.log("Game restarted");
-        } else {
-            game = setInterval(draw, 100); // Resume the game by setting the interval again
-            isGamePaused = false;
-            console.log("Game resumed");
+            cycleEventListener();
         }
     }
 });
 
-document.addEventListener("keydown", function (event) {
-    if (event.ctrlKey && event.altKey && event.key === 's') {
-        console.log("Hiding iframe")
-        // Getting the iframe element
-        var gameFrame = document.getElementById('gameFrame');
-
-        // Hiding the iframe
-        gameFrame.setAttribute('hidden', 'true');
-    }
+document.getElementById("close-modal").addEventListener("click", function () {
+    window.parent.document.getElementById('gameFrame').style.display = 'none';
+    window.parent.document.body.focus();
 });
+
 
 let game = setInterval(draw, 100);
