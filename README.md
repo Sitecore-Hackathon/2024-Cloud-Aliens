@@ -22,7 +22,7 @@ Discover the seamless integration of our classic Snake game right within the Sit
 
  - Gameplay in Action: Get a firsthand look at the snake slithering through the digital garden, growing with each item it devours. Our video showcases smooth gameplay, intuitive controls, and how the game fits perfectly within your workflow.
 
-[CM Snake - YouTube](#video-link)
+[CM Snake - YouTube](https://youtu.be/u5J-l8-q8m8)
 
 
 ## Pre-requisites and Dependencies
@@ -51,18 +51,16 @@ Welcome to the Snake game module for Sitecore, a delightful diversion during you
 
 ### Starting the Game
 
-- Once the game interface is open, press the **Spacebar** on your keyboard to begin the game. The snake will start moving, and you're now on your way to setting a high score!
+- Once the game interface is open, press **any arrow key** on your keyboard to begin the game. The snake will start moving, and you're now on your way to setting a high score!
 
 ### Gameplay Instructions
 
 - **Movement**: Use the **arrow keys** to direct the snake towards the items.
-- **Pause**: Hit the **Spacebar** to pause the game at any moment.
 
 ### Interface Guide
 
 - **Game Area**: The central part of the screen where the action happens.
 - **Score Display**: Your current score is displayed on the screen, so you know how well you're doing.
-- **Pause Indicator**: When you pause the game, a clear sign will appear on the screen.
 
 ## Tips and Tricks
 
@@ -80,7 +78,7 @@ To run our image with the CMSnake module, follow these instructions:
    .\init.ps1 -InitEnv -LicenseXmlPath "C:\path\to\license.xml" -AdminPassword "DesiredAdminPassword"
 - After the script completes, restart your terminal to ensure all changes are applied.
 
-- To start up the module, enter the following command:
+- To start up the module, enter the following command and complete the required authenitication steps:
 
     ```powershell
     .\up.ps1
