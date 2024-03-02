@@ -156,6 +156,7 @@ function playAgain() {
     }
     score = 0;
     d = "";
+    gameOver = false;
 }
 
 function toggleSnakeIframeVisibility(e) {

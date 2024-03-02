@@ -5,8 +5,6 @@ namespace CMSnake.Commands
 {
     public class Launch : Command
     {
-
-        private static bool IsSnakeLaunched = false;
         public override void Execute(CommandContext context)
         {
             User currentUser = Sitecore.Context.User;
@@ -14,23 +12,17 @@ namespace CMSnake.Commands
 
             if (currentUser != null && currentUser.IsAuthenticated)
             {
-                adminUsername = currentUser.Profile.FullName.Replace("sitecore\\","");
+                adminUsername = currentUser.Profile.FullName.Replace("sitecore\\", "");
             }
-            if (!IsSnakeLaunched)
-            {
-                AttachScript(adminUsername);
-                AttachStyles();
-                AttachIframe(adminUsername);
-                IsSnakeLaunched = true;
-            } else
-            {
-                MakeIframeVisible();
-            }
+            AttachScript(adminUsername);
+            AttachStyles();
+            AttachIframe(adminUsername);
+
         }
 
         public void AttachScript(string adminUsername)
         {
-            
+
             Sitecore.Web.UI.Sheer.SheerResponse.Eval($"localStorage.setItem('userNameCMS', '{adminUsername}');" +
                     "var scriptTag = document.createElement('script');" +
                     " scriptTag.src = '/sitecore/shell/Applications/CMSnake/Launch.js'; " +
@@ -38,19 +30,26 @@ namespace CMSnake.Commands
                 );
         }
 
-        public void AttachStyles() {
+        public void AttachStyles()
+        {
             Sitecore.Web.UI.Sheer.SheerResponse.Eval("var styleTag = document.createElement('link'); styleTag.rel = 'stylesheet'; styleTag.href = '/sitecore/shell/Applications/CMSnake/snake.css'; document.head.appendChild(styleTag);");
         }
 
-        public void AttachIframe(string adminUsername) {
-            Sitecore.Web.UI.Sheer.SheerResponse.Eval($"var iframe = document.createElement('iframe'); iframe.src = '/sitecore/shell/Applications/CMSnake/index.html'; iframe.setAttribute('id', 'gameFrame'); iframe.setAttribute('class', 'game-frame'); document.body.appendChild(iframe); iframe.focus(); iframe.setAttribute('attr-player-name', '{adminUsername}');");
-
-        }
-
-
-        public void MakeIframeVisible()
+        public void AttachIframe(string adminUsername)
         {
-            Sitecore.Web.UI.Sheer.SheerResponse.Eval("var iframe = document.getElementById('gameFrame'); iframe.style.display = 'block'; iframe.removeAttribute('hidden')");
+            Sitecore.Web.UI.Sheer.SheerResponse.Eval($@"
+        var iframe = document.getElementById('gameFrame');
+        if (!iframe) {{
+            iframe = document.createElement('iframe');
+            iframe.src = '/sitecore/shell/Applications/CMSnake/index.html';
+            iframe.setAttribute('id', 'gameFrame');
+            iframe.setAttribute('class', 'game-frame');
+            document.body.appendChild(iframe);
+        }}
+        iframe.focus();
+        iframe.setAttribute('attr-player-name', '{adminUsername}');
+    ");
         }
+
     }
 }
