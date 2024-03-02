@@ -239,7 +239,7 @@ function draw() {
     snake.unshift(newHead);
 
     ctx.fillStyle = "white";
-    ctx.font = "45px Changa one";
+    ctx.font = "45px Times New Roman";
     ctx.fillText(score, 2 * box, 1.6 * box);
 }
 

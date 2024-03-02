@@ -93,6 +93,7 @@
     <Content Include="sitecore\shell\Applications\CMSnake\audio\up.mp3" />
     <Content Include="sitecore\shell\Applications\CMSnake\img\food.png" />
     <Content Include="sitecore\shell\Applications\CMSnake\img\ground.png" />
+    <Content Include="sitecore\shell\Applications\CMSnake\img\SitecoreErrorImage.jfif" />
     <Content Include="sitecore\shell\Applications\CMSnake\index.html" />
     <Content Include="sitecore\shell\Applications\CMSnake\Launch.js" />
     <Content Include="sitecore\shell\Applications\CMSnake\snake.css" />

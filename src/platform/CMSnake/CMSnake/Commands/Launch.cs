@@ -13,6 +13,7 @@ namespace CMSnake.Commands
                 AttachScript();
                 AttachStyles();
                 AttachIframe();
+                IsSnakeLaunched = true;
             } else
             {
                 MakeIframeVisible();
