@@ -5,6 +5,9 @@ Template: "f58958d2-555b-4f56-946c-589e8866880c"
 Path: /sitecore/content/Documents and settings/All users/Start menu/Left/CMSnake
 BranchID: "a28303b4-f2d5-42e6-a3c6-79f1d06f40d4"
 SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: "Apps/32x32/Direction-1.png"
 - ID: "6ba1018f-9794-4798-963e-601d413b9ca3"
   Hint: Message
   Value: "cmsnake:launch"
@@ -38,14 +41,14 @@ Languages:
         sitecore\neha.pasi@perficient.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "495deaca-cfe0-46d4-9889-84adeffea537"
+      Value: "4a6a4cd4-0114-4147-a0b9-d1a1e410a349"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\neha.pasi@perficient.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240302T121118Z
+      Value: 20240302T123339Z
     - ID: "e7d3348b-8323-42ba-bc9c-48e1f4e994dc"
       Hint: Tool tip
       Value: Launch CMSnake
