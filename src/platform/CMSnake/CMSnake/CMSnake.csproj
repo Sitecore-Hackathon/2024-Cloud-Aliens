@@ -85,7 +85,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sitecore\shell\Applications\CMSnake\audio\dead.mp3" />
+    <Content Include="sitecore\shell\Applications\CMSnake\audio\down.mp3" />
+    <Content Include="sitecore\shell\Applications\CMSnake\audio\eat.mp3" />
+    <Content Include="sitecore\shell\Applications\CMSnake\audio\left.mp3" />
+    <Content Include="sitecore\shell\Applications\CMSnake\audio\right.mp3" />
+    <Content Include="sitecore\shell\Applications\CMSnake\audio\up.mp3" />
+    <Content Include="sitecore\shell\Applications\CMSnake\img\food.png" />
+    <Content Include="sitecore\shell\Applications\CMSnake\img\ground.png" />
+    <Content Include="sitecore\shell\Applications\CMSnake\index.html" />
     <Content Include="sitecore\shell\Applications\CMSnake\Launch.js" />
+    <Content Include="sitecore\shell\Applications\CMSnake\snake.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Launch.cs" />
