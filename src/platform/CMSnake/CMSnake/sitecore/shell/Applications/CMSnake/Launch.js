@@ -20,17 +20,14 @@ function toggleIframeVisibility(e) {
         }
 
         // Toggle visibility based on current state
-        if (isIframeVisible) {
+        if (isIframeVisible && gameFrame) {
             gameFrame.style.display = 'none';
-            alert("Hiding Snake");
-        } else {
+            isIframeVisible = false;
+        } else if (gameFrame) {
             gameFrame.style.display = 'block';
-            alert("Launching Snake");
             gameFrame.focus();
+            isIframeVisible = true;
         }
-
-        // Update the visibility state
-        isIframeVisible = !isIframeVisible;
     }
 
     // Additional check for Escape key to hide the iframe
@@ -73,7 +70,6 @@ function fetchScores() {
             return response.json();
         })
         .then(data => {
-            console.log('Data:', data);
             cmsnakeUserScoresUnformatted = data.Scores;
             if (cmsnakeUserScoresUnformatted.indexOf('&') !== -1) {
                 cmsnakeUserScores = data.Scores.split('&');
@@ -91,8 +87,12 @@ function fetchScores() {
                 highestScore = getItemWithHighestScore(cmsnakeUserScores).split("=");
             }
 
-            console.log("Current User - ", currentUserName + currentUserScore)
-            console.log("Top Score - ", highestScore[0] + highestScore[1])
+            var gameFrame = document.getElementById('gameFrame');
+            if (gameFrame) {
+                gameFrame.setAttribute('attr-player-name', currentUserName);
+                gameFrame.setAttribute('attr-highest-score', highestScore[1]);
+                gameFrame.setAttribute('attr-highest-user-score-name', highestScore[0]);
+            }
 
         })
         .catch(error => {
@@ -129,15 +129,14 @@ function getItemWithHighestScore(array) {
     return highestScoreItem;
 }
 
-updateScores();
 
-function updateScores() {
+function updateScores(suppliedUserScore) {
     const filteredItems = filterItemsByExpression(cmsnakeUserScores, currentUserName + '=');
     var updatedFieldValue = cmsnakeUserScoresUnformatted;
-    var currentScore = 100;
+    var currentScore = suppliedUserScore;
 
     if (filteredItems.length > 0) {
-        currentUserScoreInItem = filteredItems[0].split('=')[1];
+        let currentUserScoreInItem = filteredItems[0].split('=')[1];
         if (currentUserScoreInItem < currentScore) {
             var expressionToReplaceWith = currentUserName + "=" + currentScore;
             updatedFieldValue = cmsnakeUserScoresUnformatted.replace(filteredItems[0], expressionToReplaceWith);
@@ -163,11 +162,7 @@ function updateScores() {
         },
         body: JSON.stringify(data)
 
-    }).then(response => response.json())
-        .then(data => console.log('Success:', data))
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+    })
 }
 
 
