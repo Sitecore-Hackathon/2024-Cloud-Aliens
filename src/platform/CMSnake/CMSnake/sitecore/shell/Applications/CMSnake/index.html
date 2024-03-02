@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>Snake Game</title>
+    <style>
+        .container {
+            position: relative;
+            max-width: 608px;
+            max-height: 608px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+
+        #play-again-modal {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            z-index: 1;
+            width: 608px;
+            height: 608px;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+
+            position: absolute;
+            top: 0;
+        }
+
+        #play-again-modal h2 {
+            color: #fff;
+        }
+
+        #play-again-modal button {
+            display: block;
+            margin: 20px auto;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5%;
+        }
+    </style>
+</head>
+<div class="container">
+    <canvas id="snake" width="608" height="608">
+    </canvas>
+    <div id="play-again-modal">
+        <h2>Game Over</h2>
+        <p>(Press Spacebar)</p>
+        <button id="play-again-button">Play Again</button>
+    </div>
+</div>
+<script src="snake.js"></script>
+
+</html>
